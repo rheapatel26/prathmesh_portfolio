@@ -11,9 +11,9 @@ interface NavLinkItem {
 
 const navLinks: NavLinkItem[] = [
   { label: 'About', href: '#about' },
+  { label: 'Life Lately', href: '#life-lately' },
   { label: 'Case studies', href: '#case-studies' },
   { label: 'Lab', href: '#lab' },
-  { label: 'Life Lately', href: '#life-lately' },
   { label: 'Resume', href: portfolio.resumeUrl || '/resume.pdf', isExternal: true },
   { label: 'Contact', href: '#classified-contact' },
 ];

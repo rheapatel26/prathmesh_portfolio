@@ -6,7 +6,6 @@ import About from './sections/About';
 import CaseStudies from './sections/CaseStudies';
 import ColorBridge from './sections/ColorBridge';
 import Labs from './sections/Labs';
-import Experience from './sections/Experience';
 import LifeLately from './sections/LifeLately';
 import ClassifiedContact from './sections/ClassifiedContact';
 import Footer from './sections/Footer';
@@ -27,12 +26,11 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <LifeLately />
         <CaseStudies />
         <ColorBridge />
         <Labs />
         <ClassifiedContact />
-        <Experience />
-        <LifeLately />
       </main>
 
       <Footer />

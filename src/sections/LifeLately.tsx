@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion, useInView, useMotionValue, useTransform } from 'framer-motion';
-import photo1 from '@/assets/life-lately/photo-1.svg';
-import photo2 from '@/assets/life-lately/photo-2.svg';
-import photo3 from '@/assets/life-lately/photo-3.svg';
-import photo4 from '@/assets/life-lately/photo-4.svg';
-import photo5 from '@/assets/life-lately/photo-5.svg';
+import photo1 from '@/assets/life-lately/photo-1.png';
+import photo2 from '@/assets/life-lately/photo-2.png';
+import photo3 from '@/assets/life-lately/photo-3.png';
+import photo4 from '@/assets/life-lately/photo-4.png';
+import photo5 from '@/assets/life-lately/photo-5.png';
 import './LifeLately.css';
 
 // Dummy placeholders — swap for real photos later.

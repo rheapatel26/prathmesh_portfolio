@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import phoneImg from '@/assets/phone.png';
 import { portfolio } from '../data/portfolio';
 import './ClassifiedContact.css';
@@ -8,22 +8,6 @@ export default function ClassifiedContact() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [ringing, setRinging] = useState(false);
-
-  /* Scroll-driven color transition: white (0%) → black (100%) */
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'start start'],
-  });
-  const bg = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['rgb(238,235,232)', 'rgb(13,13,13)']
-  );
-  const textColor = useTransform(
-    scrollYProgress,
-    [0, 0.6, 1],
-    ['rgb(35,35,15)', 'rgb(35,35,15)', 'rgb(242,238,225)']
-  );
 
   function triggerRing() {
     setRinging(true);
@@ -35,7 +19,6 @@ export default function ClassifiedContact() {
       ref={ref}
       className="classified-contact"
       id="classified-contact"
-      style={{ backgroundColor: bg }}
       aria-label="Classified Contact"
     >
       <div className="classified-contact__inner">
@@ -46,7 +29,6 @@ export default function ClassifiedContact() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ color: textColor }}
         >
           CLASSIFIED CONTACT
         </motion.span>
@@ -112,7 +94,6 @@ export default function ClassifiedContact() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          style={{ color: textColor }}
           data-hover
         >
           ↗ {portfolio.email}

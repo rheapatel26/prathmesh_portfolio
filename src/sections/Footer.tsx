@@ -34,9 +34,8 @@ export default function Footer() {
           <div className="footer__links-col">
             {[
               { href: '#about', label: 'About' },
-              { href: '#case-studies', label: 'Case Studies' },
-              { href: '#experience', label: 'Experience' },
               { href: '#life-lately', label: 'Life Lately' },
+              { href: '#case-studies', label: 'Case Studies' },
             ].map(({ href, label }) => (
               <a
                 key={href}

@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, type CSSProperties } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { caseStudies } from '../data/caseStudies';
+import { BinderClip, PaperClipIcon, TornMapCorner } from '../components/CaseStudyDecor';
 import './CaseStudies.css';
 
 // Sticky-stack tuning.
@@ -20,6 +21,10 @@ const LAST_WRAP_VH = 100;
 const TAB_STAGGER_PX = 160;
 const CARD_STAGGER_PX = 32;
 
+// One shade of red per card, darkest first — overrides the shared --cs-red
+// custom property for that card's subtree (folder bg, spiral holes, CTA hover).
+const CARD_SHADES = ['#5c0101', '#8a0202', '#b5473d'];
+
 const wrapHeightVh = (index: number, total: number) => (index === total - 1 ? LAST_WRAP_VH : WRAP_VH);
 
 const cumulativeVh = (index: number, total: number) => {
@@ -31,6 +36,7 @@ const cumulativeVh = (index: number, total: number) => {
 function CaseStudyOverlay({ study, index, total }: { study: (typeof caseStudies)[0]; index: number; total: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const isLast = index === total - 1;
 
   return (
     // Spans from this card's own start to the very end of the whole stack, so
@@ -39,7 +45,11 @@ function CaseStudyOverlay({ study, index, total }: { study: (typeof caseStudies)
     // partially covered by the ones that come after it.
     <div
       className="cs-overlay"
-      style={{ top: `${cumulativeVh(index, total)}vh`, zIndex: 10 + index }}
+      style={{
+        top: `${cumulativeVh(index, total)}vh`,
+        zIndex: 10 + index,
+        ['--cs-red' as string]: CARD_SHADES[index % CARD_SHADES.length],
+      } as CSSProperties}
     >
       {/* Folder tab — all tabs sit in one row (same top), staircasing only
           rightward as the index increases. */}
@@ -63,16 +73,25 @@ function CaseStudyOverlay({ study, index, total }: { study: (typeof caseStudies)
         }}
         aria-label={`Case study: ${study.tab}`}
       >
-        <div className="cs-card__body">
-          {/* Left column */}
+        <div className={`cs-card__body${isLast ? ' cs-card__body--last' : ''}`}>
+          {/* Left column — spiral-bound notebook page */}
           <motion.div
             className="cs-card__left"
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="cs-card__spiral" aria-hidden="true" />
+
             <div className="cs-card__photo-wrap">
+              <BinderClip className="cs-card__clip cs-card__clip--photo" />
               <img src={study.photo} alt={study.title} className="cs-card__photo" loading="lazy" />
+            </div>
+
+            <div className="cs-card__receipt" aria-hidden="true">
+              <PaperClipIcon className="cs-card__receipt-clip" />
+              <span>RECEIPT</span>
+              <span>{study.brief.year}</span>
             </div>
 
             <h3 className="cs-card__title">{study.title}</h3>
@@ -94,14 +113,19 @@ function CaseStudyOverlay({ study, index, total }: { study: (typeof caseStudies)
             )}
           </motion.div>
 
-          {/* Right column */}
+          {/* Right column — hole-punched brief sheet, overlapped by a
+              second mounted polaroid with a handwritten caption */}
           <motion.div
             className="cs-card__right"
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
+            <TornMapCorner className="cs-card__map-corner" />
+
             <div className="cs-card__brief">
+              <div className="cs-card__brief-holes" aria-hidden="true" />
+
               <div className="cs-card__brief-tag">
                 <span>{study.category}</span>
                 <strong>{study.categoryNumber}</strong>
@@ -121,7 +145,10 @@ function CaseStudyOverlay({ study, index, total }: { study: (typeof caseStudies)
             </div>
 
             <div className="cs-card__mockup-wrap">
+              <div className="cs-card__mockup-backing" aria-hidden="true" />
+              <BinderClip className="cs-card__clip cs-card__clip--mockup" />
               <img src={study.mockup} alt="" className="cs-card__mockup" loading="lazy" />
+              <p className="cs-card__mockup-caption">{study.title.charAt(0) + study.title.slice(1).toLowerCase()}</p>
             </div>
           </motion.div>
         </div>

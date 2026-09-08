@@ -18,10 +18,9 @@ const fadeUp = {
 };
 
 const paragraphs = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis.',
-  'Currently open to freelance projects, full-time roles, and interesting collaborations. Previously worked with startups and product teams across fintech, healthcare, and e-commerce.',
+  'I’m a graphic designer who likes turning ideas into things people want to look at. I’m into branding, visual identity, art direction, motion, and pretty much anything that lets me make something from scratch.',
+  'Outside of design, I’m usually watching a movie, following sports, creating short films and funny sketches or getting distracted by something interesting on the internet. I like good stories, good visuals, and figuring out how the two can come together.',
+  'Currently studying, making things, and trying not to overthink everything',
 ];
 
 const socialLinks = Object.entries(portfolio.social).map(([key, url]) => ({
