@@ -1,0 +1,221 @@
+/* ============================================================
+   GLOBAL DESIGN SYSTEM — Edit tokens here to retheme the site
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Design Tokens ───────────────────────────────────────── */
+:root {
+  /* Colors — change theme here */
+  --bg-hero: #e4e0c4;
+  /* warm cream/yellow hero bg     */
+  --bg-dark: #0a0a08;
+  /* near-black sections           */
+  --bg-footer: #1a1c10;
+  /* dark olive footer             */
+  --bg-card: #111109;
+  /* project card bg               */
+
+  --text-primary: #0d1b4b;
+  /* deep navy (on light)         */
+  --text-light: #e4e0c4;
+  /* cream (on dark)               */
+  --text-muted: #6b6b58;
+  /* muted on light bg             */
+  --text-muted-dk: #8a8a70;
+  /* muted on dark bg              */
+  --text-accent: #c8c49e;
+  /* gold-cream accent             */
+
+  --border-light: rgba(13, 27, 75, 0.15);
+  --border-dark: rgba(228, 224, 196, 0.15);
+  --border-dashed: rgba(228, 224, 196, 0.25);
+
+  /* Typography */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --nav-h: 85px;
+  --section-px: clamp(24px, 5vw, 80px);
+  --max-w: 1440px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.2s;
+  --dur-med: 0.4s;
+  --dur-slow: 0.8s;
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* clip (not hidden) — overflow-x:hidden on html/body silently breaks
+     position:sticky for all descendants in Chromium/WebKit */
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: clip;
+  cursor: none;
+  /* custom cursor */
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: none;
+  font-family: inherit;
+}
+
+/* ── Custom Cursor ───────────────────────────────────────── */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--text-light);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur-fast) var(--ease-out),
+    width var(--dur-fast) var(--ease-out),
+    height var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+  mix-blend-mode: normal;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(228, 224, 196, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s var(--ease-out),
+    width var(--dur-med) var(--ease-out),
+    height var(--dur-med) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.cursor.cursor--dark {
+  background: var(--text-light);
+  mix-blend-mode: normal;
+}
+
+.cursor-ring.cursor-ring--dark {
+  border-color: rgba(228, 224, 196, 0.5);
+}
+
+.cursor.cursor--hover {
+  width: 16px;
+  height: 16px;
+}
+
+.cursor-ring.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+}
+
+/* ── Noise Overlay ───────────────────────────────────────── */
+.noise {
+  position: fixed;
+  inset: -100% -100%;
+  width: 300%;
+  height: 300%;
+  pointer-events: none;
+  z-index: 999999;
+  opacity: 0.24;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 550px 550px;
+  animation: grain-jitter 0.8s steps(10) infinite;
+  filter: contrast(680%) brightness(80%) grayscale(100%);
+  image-rendering: pixelated;
+}
+
+@keyframes grain-jitter {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

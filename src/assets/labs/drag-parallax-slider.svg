@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#131313"/>
+  <g>
+    <rect x="40" y="220" width="130" height="160" fill="#c94b3a"/>
+    <rect x="185" y="220" width="130" height="160" fill="#3a5fc9"/>
+    <rect x="330" y="220" width="130" height="160" fill="#e0a13a"/>
+    <rect x="475" y="220" width="130" height="160" fill="#2f8f5b"/>
+    <rect x="620" y="220" width="130" height="160" fill="#c94b3a"/>
+  </g>
+  <text x="400" y="560" font-family="monospace" font-size="16" fill="#777" text-anchor="middle" letter-spacing="2">REPLACE — DRAG PARALLAX SLIDER</text>
+</svg>

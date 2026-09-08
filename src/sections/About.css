@@ -1,0 +1,195 @@
+/* ── Shared section utilities ─────────────────────────────── */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted-dk);
+  margin-bottom: 32px;
+  border: 1px solid var(--border-dark);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* ── About (antonyraphy-style editorial) ─────────────────── */
+.about2 {
+  background: #ffffff;
+  padding: 80px var(--section-px) 100px;
+  position: relative;
+  z-index: 5;
+  margin-top: -100px;
+  /* Overlap Hero by 100px */
+}
+
+.about2__tear {
+  position: absolute;
+  top: -64px;
+  /* Pull up to overlap the Hero section bottom */
+  left: 0;
+  width: 100%;
+  height: 90px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.about2__tear-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.about2__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* Small muted label top-left */
+.about2__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+/* Two-column layout */
+.about2__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 500px);
+  gap: 60px;
+  align-items: start;
+}
+
+.about2__right {
+  display: flex;
+  flex-direction: column;
+  /* stretch (not center) so .about2__flipcard has a definite width for the
+     card's own width:100% to resolve against */
+  align-items: stretch;
+  gap: 32px;
+  width: 100%;
+}
+
+/* Left — large paragraphs */
+.about2__text {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 650px;
+}
+
+.about2__para {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 400;
+  line-height: 1.65;
+  /* Dark red — echoes the ID-card imagery beside it */
+  color: #8f1c1f;
+}
+
+.about2__flipcard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Right — meta horizontal row */
+.about2__meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Individual cluster */
+.about2__cluster {
+  position: relative;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid #000000ff;  */
+  gap: 4px;
+  padding-bottom: 10px;
+  margin-top: -50px;
+}
+
+/* Corner bracket decoration */
+.about2__bracket {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Social links */
+.about2__social-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease-out),
+    gap var(--dur-fast) var(--ease-out);
+  line-height: 2;
+}
+
+.about2__social-link:hover {
+  color: var(--text-primary);
+  gap: 10px;
+}
+
+.about2__social-arrow {
+  font-size: 12px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.about2__social-link:hover .about2__social-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Plain cluster lines (date, location, coords) */
+.about2__cluster-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .about2__body {
+    grid-template-columns: 1fr 400px;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about2__body {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about2__text {
+    max-width: 100%;
+  }
+
+  .about2__meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+  }
+}

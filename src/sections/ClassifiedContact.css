@@ -1,0 +1,224 @@
+/* ── Classified Contact ──────────────────────────────────── */
+.classified-contact {
+  position: relative;
+  z-index: 6;
+  overflow: hidden;
+}
+
+.classified-contact__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px var(--section-px) 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+/* Top mono label */
+.classified-contact__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* Yellow sticky-note style headline banner */
+.classified-contact__banner {
+  background: #4f0101ff;
+  padding: 18px 36px;
+  border-radius: 3px;
+  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.18);
+  /* Slight rotation like a stuck post-it */
+  transform: rotate(-0.6deg);
+}
+
+.classified-contact__headline {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 2.2vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #d1d1d1ff;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Phone image container */
+.classified-contact__phone-wrap {
+  width: min(480px, 85vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: none;
+}
+
+/* ── iMessage-style speech bubble ── */
+.classified-contact__bubble {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 20px 20px 20px 4px;
+  /* iMessage left-tail shape */
+  padding: 12px 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 20;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.18),
+    0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.classified-contact__bubble-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgb(159, 28, 31);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Bubble pointed tail — bottom-left pointing down toward the phone */
+.classified-contact__bubble-tail {
+  position: absolute;
+  bottom: -10px;
+  left: 24px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 12px solid #ffffff;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* ── Typing dots ── */
+.classified-contact__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 4px;
+}
+
+.classified-contact__dots span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgb(159, 28, 31);
+  opacity: 0.3;
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.classified-contact__dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.classified-contact__dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.classified-contact__dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-pulse {
+
+  0%,
+  60%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+.classified-contact__phone {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+  /* Drop shadow for depth */
+  filter: drop-shadow(0 32px 64px rgba(0, 0, 0, 0.35));
+  transition: filter 0.3s ease;
+  cursor: none;
+}
+
+.classified-contact__phone:hover {
+  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.45));
+}
+
+/* Ringing shake animation */
+@keyframes phone-ring {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+
+  10% {
+    transform: rotate(-5deg) translateX(-4px);
+  }
+
+  20% {
+    transform: rotate(5deg) translateX(4px);
+  }
+
+  30% {
+    transform: rotate(-4deg) translateX(-3px);
+  }
+
+  40% {
+    transform: rotate(4deg) translateX(3px);
+  }
+
+  50% {
+    transform: rotate(-3deg) translateX(-2px);
+  }
+
+  60% {
+    transform: rotate(3deg) translateX(2px);
+  }
+
+  70% {
+    transform: rotate(-2deg) translateX(-1px);
+  }
+
+  80% {
+    transform: rotate(2deg) translateX(1px);
+  }
+
+  90% {
+    transform: rotate(-1deg) translateX(0);
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+}
+
+.classified-contact__phone--ringing {
+  animation: phone-ring 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Bottom email CTA */
+.classified-contact__cta {
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1.6vw, 16px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.classified-contact__cta:hover {
+  opacity: 1;
+}

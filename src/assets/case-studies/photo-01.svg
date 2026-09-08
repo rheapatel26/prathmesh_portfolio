@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="625" viewBox="0 0 500 625">
+  <rect width="500" height="625" fill="#c7c2a0"/>
+  <rect x="24" y="24" width="452" height="452" fill="#8f8b62"/>
+  <circle cx="250" cy="200" r="70" fill="#c7c2a0" opacity="0.5"/>
+  <rect x="150" y="290" width="200" height="120" fill="#c7c2a0" opacity="0.4"/>
+  <text x="250" y="500" font-family="monospace" font-size="20" fill="#3a3a2a" text-anchor="middle" letter-spacing="2">REPLACE — PHOTO 01</text>
+</svg>

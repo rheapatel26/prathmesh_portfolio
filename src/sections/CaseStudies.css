@@ -1,0 +1,374 @@
+/* ── Case Studies (antonyraphy-style sticky folder stack) ──── */
+.case-studies {
+  --cs-olive: #8a0202ff;
+  --cs-olive-dark: #8a0;
+  --cs-paper: #f2eee1;
+  --cs-ink: #23230f;
+  --cs-tag: #000000ff;
+  background: #eeebe8;
+  position: relative;
+  z-index: 5;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted-dk);
+  margin-bottom: 32px;
+  border: 1px solid var(--border-dark);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.case-studies .section-label {
+  color: var(--text-muted);
+  border-color: var(--border-light);
+}
+
+/* Header banner */
+.case-studies__header {
+  padding: 80px var(--section-px) 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 100%;
+}
+
+.case-studies__heading {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 140px);
+  font-weight: 400;
+  color: #8a0202;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+/* Stack container — positioned ancestor for the absolute tab overlays below */
+.case-studies__stack {
+  position: relative;
+  padding: 0 var(--section-px);
+}
+
+/* Invisible spacer — gives the stack its total scroll height, since the
+   visible content is pulled out of flow into .cs-overlay below. */
+.cs-spacer {
+  pointer-events: none;
+}
+
+/* ── Overlay ──────────────────────────────────────────────────
+   One per card. Absolutely positioned against .case-studies__stack (top set
+   inline to the cumulative scroll-height of every card before it, bottom
+   pinned to the stack's end) so both the tab and card body inside keep a
+   sticky containing block spanning the REST of the stack — once a folder
+   arrives it never unsticks/scrolls away, it just gets partially covered
+   by the ones that come after it. */
+.cs-overlay {
+  position: absolute;
+  /* Centre the narrowed card — translate trick works on absolute elements */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, calc(100% - 2 * var(--section-px)));
+  bottom: 0;
+}
+
+.cs-tab {
+  position: sticky;
+  width: fit-content;
+  pointer-events: none;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.cs-card {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  min-height: 380px;
+  max-height: 520px;
+}
+
+.cs-tab span {
+  display: inline-block;
+  pointer-events: auto;
+  background: var(--cs-paper);
+  border: 1px solid rgba(35, 35, 15, 0.25);
+  border-bottom: none;
+  padding: 8px 18px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cs-ink);
+  border-radius: 6px 6px 0 0;
+  white-space: nowrap;
+}
+
+/* Folder body */
+.cs-card__body {
+  flex: 1;
+  min-height: 0;
+  background: var(--cs-olive);
+  background-image:
+    repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 6px);
+  border-radius: 0 10px 10px 10px;
+  box-shadow: 0 24px 48px -16px rgba(20, 20, 10, 0.35);
+  padding: clamp(24px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(24px, 4vw, 56px);
+  overflow: hidden;
+}
+
+/* ── Left column ──────────────────────────────────────────── */
+.cs-card__left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.cs-card__photo-wrap {
+  align-self: flex-start;
+  background: #fdfcf7;
+  padding: 10px 10px 32px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  transform: rotate(-2.5deg);
+  max-width: 220px;
+}
+
+.cs-card__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: grayscale(0.35) sepia(0.25) contrast(1.05);
+}
+
+.cs-card__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(18px, 2.1vw, 26px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--cs-paper);
+  text-transform: uppercase;
+}
+
+.cs-card__desc {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.6;
+  color: rgba(242, 238, 225, 0.85);
+}
+
+.cs-card__desc strong {
+  color: var(--cs-paper);
+  font-weight: 700;
+}
+
+.cs-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 12px 20px;
+  background: var(--cs-paper);
+  color: var(--cs-ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+
+.cs-card__cta:hover {
+  transform: translate(2px, -2px);
+  background: #ffffff;
+}
+
+.cs-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 12px 20px;
+  background: rgba(242, 238, 225, 0.15);
+  border: 1px dashed rgba(242, 238, 225, 0.5);
+  color: var(--cs-paper);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.cs-card__badge-arrow {
+  font-size: 14px;
+}
+
+/* ── Right column ─────────────────────────────────────────── */
+.cs-card__right {
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-card__brief {
+  position: relative;
+  z-index: 2;
+  background: var(--cs-paper);
+  color: var(--cs-ink);
+  padding: 22px 24px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+}
+
+.cs-card__brief-tag {
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  transform: translateY(-100%);
+  background: var(--cs-tag);
+  color: var(--text-light);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  border-radius: 4px 4px 0 0;
+  min-width: 76px;
+}
+
+.cs-card__brief-tag span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.cs-card__brief-tag strong {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.cs-card__brief-line {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+.cs-card__brief-heading {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(35, 35, 15, 0.3);
+}
+
+.cs-card__brief-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 6px;
+  color: rgba(35, 35, 15, 0.85);
+}
+
+.cs-card__mockup-wrap {
+  position: relative;
+  z-index: 1;
+  margin: -30px 0 0 auto;
+  width: 88%;
+  transform: rotate(1.5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.cs-card__mockup {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cs-card__body {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .cs-card__mockup-wrap {
+    margin: 16px 0 0;
+    width: 100%;
+    transform: none;
+  }
+
+  .cs-card__right {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1040px) {
+  .case-studies__header {
+    padding: 60px 24px 40px;
+  }
+
+  .case-studies__stack {
+    padding: 0 16px;
+  }
+
+  /* Disable pinning on small screens — plain stacked cards read better */
+  .cs-spacer {
+    display: none;
+  }
+
+  .cs-overlay {
+    position: static !important;
+    margin-bottom: 40px;
+  }
+
+  .cs-card {
+    position: static !important;
+    top: auto !important;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .cs-card__body {
+    padding: 20px;
+  }
+
+  /* Tabs revert to a normal in-flow label directly above their own card */
+  .cs-tab {
+    position: static !important;
+    top: auto !important;
+    margin-left: 0 !important;
+  }
+
+  .cs-card__photo-wrap {
+    max-width: 160px;
+  }
+}

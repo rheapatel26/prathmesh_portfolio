@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1125" viewBox="0 0 900 1125">
+  <rect width="900" height="1125" fill="#8f1c1f"/>
+  <polygon points="450,220 680,640 220,640" fill="#ffffff" opacity="0.12"/>
+  <rect x="300" y="760" width="300" height="160" fill="#ffffff" opacity="0.15"/>
+  <text x="450" y="1040" font-family="monospace" font-size="26" fill="#ffffff" text-anchor="middle" letter-spacing="2">REPLACE — PHOTO 03</text>
+</svg>

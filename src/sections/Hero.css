@@ -1,0 +1,12 @@
+.hero-simple {
+  width: 100%;
+  background: #0d0d0d;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-simple-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

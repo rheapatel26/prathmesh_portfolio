@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Continuous Portrait Scroll Demo</title>
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --paper: #f4f1ea;
+            --text: #f2f2f0;
+            --muted: #8a8a86;
+            --tear-gold: #8a7a3f;
+            --ink: #17170f;
+            --tear-shadow: #8a7a3f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('grainy.png');
+            background-repeat: repeat;
+            opacity: 0.05;
+            /* Adjust to control the intensity of the grain */
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .spacer {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ===================================================
+     CONTINUOUS PORTRAIT PAN
+     One tall sticky container. A single <img> is pinned
+     inside it. As you scroll, object-position Y moves
+     linearly from 0% → 100% with zero fade, zero snap,
+     zero CSS transition on the image itself.
+  =================================================== */
+
+        .portrait-scroll {
+            position: relative;
+            /* Tall enough to give plenty of scroll room.
+               Increase/decrease to taste. */
+            height: 300vh;
+        }
+
+        .portrait-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: #0d0d0d;
+        }
+
+        .portrait-pan {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            z-index: 2;
+            will-change: transform;
+        }
+
+
+
+        .content-below {
+            background: var(--paper);
+            padding: 60px 24px;
+            color: var(--ink);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===================================================
+     PART 2 — TORN EDGE PEEL REVEAL
+  =================================================== */
+
+        .case-study {
+            max-width: 900px;
+            margin: 0 auto 160px;
+            padding: 0 24px;
+        }
+
+        .eyebrow {
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .headline {
+            font-size: clamp(22px, 3vw, 34px);
+            line-height: 1.15;
+            margin: 0 0 28px;
+            max-width: 640px;
+        }
+
+        .tear-mask {
+            position: relative;
+            height: 480px;
+        }
+
+        .tear-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: translateY(15%) scale(1.1);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tear-mask.in-view .tear-image {
+            transform: translateY(0) scale(1);
+        }
+
+        .tear-panel {
+            position: absolute;
+            inset: 0;
+            background: var(--bg);
+            z-index: -2;
+            transform: translateY(0%);
+            transition: transform 1.1s cubic-bezier(0.76, 0, 0.24, 1);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 92%,
+                    96% 94%, 91% 91%, 86% 96%, 81% 92%, 76% 97%,
+                    71% 91%, 66% 95%, 61% 90%, 56% 96%, 51% 92%,
+                    46% 97%, 41% 91%, 36% 95%, 31% 90%, 26% 96%,
+                    21% 92%, 16% 97%, 11% 91%, 6% 95%, 0% 91%);
+        }
+
+        .tear-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 -6px 8px -4px var(--tear-gold);
+            clip-path: inherit;
+            opacity: 0.7;
+        }
+
+        .tear-mask.in-view .tear-panel {
+            transform: translateY(-105%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="portrait-scroll" id="portraitScroll">
+        <div class="portrait-sticky">
+            <!--
+                Single image. JS writes object-position Y directly
+                on every scroll tick — no CSS transition, no fade.
+            -->
+            <img class="portrait-pan" id="portraitPan" src="preview.png" alt="Prathamesh Revenkar">
+        </div>
+    </div>
+
+    <div class="content-below">
+        <h2>Content sits here, on the paper below the tear</h2>
+        <p style="color:#555;">The torn edge is generated fresh on every load — reload the page and the wiggle pattern
+            shifts slightly, because it's driven by SVG turbulence noise rather than a fixed image.</p>
+    </div>
+
+    <div class="spacer">scroll down ↓ (torn edge reveal)</div>
+
+    <section class="case-study">
+        <div class="eyebrow">Clarion_01</div>
+        <h2 class="headline">Designing an AI that knows when to stay quiet.</h2>
+        <div class="tear-mask">
+            <img class="tear-image" src="https://picsum.photos/id/1015/1200/800" alt="">
+            <div class="tear-panel"></div>
+        </div>
+    </section>
+
+    <div class="spacer" style="height: 40vh;">end</div>
+
+    <script>
+        /* ── Continuous portrait pan ─────────────────────────────────────
+           Maps scroll progress (0 → 1) through .portrait-scroll
+           directly to object-position Y (0% → 100%).
+           No easing, no transition — pure 1:1 scroll-linked pan.
+        ──────────────────────────────────────────────────────────────── */
+        const portraitScroll = document.getElementById('portraitScroll');
+        const portraitPan = document.getElementById('portraitPan');
+
+        function updatePan() {
+            const W = portraitScroll.offsetWidth;
+            const H = window.innerHeight;
+
+            const w_nat = portraitPan.naturalWidth || 785;
+            const h_nat = portraitPan.naturalHeight || 800;
+
+            const ratio_container = W / H;
+            const ratio_portrait = w_nat / h_nat;
+
+            let scaled_w, scaled_h;
+            if (ratio_container > ratio_portrait) {
+                scaled_w = W;
+                scaled_h = W / ratio_portrait;
+            } else {
+                scaled_h = H;
+                scaled_w = H * ratio_portrait;
+            }
+
+            portraitPan.style.width = `${scaled_w}px`;
+            portraitPan.style.height = `${scaled_h}px`;
+
+            const left_x = (W - scaled_w) / 2;
+            portraitPan.style.left = `${left_x}px`;
+
+            const rect = portraitScroll.getBoundingClientRect();
+            const scrollable = portraitScroll.offsetHeight - H;
+            let progress = -rect.top / scrollable;
+            progress = Math.max(0, Math.min(1, progress));
+
+            const top_y = (H - scaled_h) * progress;
+            portraitPan.style.transform = `translateY(${top_y}px)`;
+        }
+
+        window.addEventListener('scroll', updatePan, { passive: true });
+        window.addEventListener('resize', updatePan);
+        updatePan(); // set initial position
+
+        /* ── Torn-edge reveal ────────────────────────────────────────── */
+        const tearMasks = document.querySelectorAll('.tear-mask');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+        tearMasks.forEach(m => observer.observe(m));
+    </script>
+
+
+</body>
+
+</html>

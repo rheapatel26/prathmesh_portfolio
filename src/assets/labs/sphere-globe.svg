@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#131313"/>
+  <g fill="#3a3a3a">
+    <circle cx="400" cy="300" r="3" fill="#555"/>
+  </g>
+  <g>
+    <!-- squares arranged around a circle to suggest a photo-sphere -->
+    <rect x="380" y="140" width="40" height="50" fill="#c94b3a" transform="rotate(0 400 300)"/>
+    <rect x="470" y="165" width="40" height="50" fill="#3a5fc9" transform="rotate(30 490 190)"/>
+    <rect x="530" y="230" width="40" height="50" fill="#c94b3a" transform="rotate(60 550 255)"/>
+    <rect x="550" y="300" width="40" height="50" fill="#3a5fc9"/>
+    <rect x="530" y="370" width="40" height="50" fill="#c94b3a" transform="rotate(-60 550 395)"/>
+    <rect x="470" y="435" width="40" height="50" fill="#3a5fc9" transform="rotate(-30 490 460)"/>
+    <rect x="380" y="460" width="40" height="50" fill="#c94b3a"/>
+    <rect x="290" y="435" width="40" height="50" fill="#3a5fc9" transform="rotate(30 310 460)"/>
+    <rect x="230" y="370" width="40" height="50" fill="#c94b3a" transform="rotate(60 250 395)"/>
+    <rect x="210" y="300" width="40" height="50" fill="#3a5fc9"/>
+    <rect x="230" y="230" width="40" height="50" fill="#c94b3a" transform="rotate(-60 250 255)"/>
+    <rect x="290" y="165" width="40" height="50" fill="#3a5fc9" transform="rotate(-30 310 190)"/>
+  </g>
+  <text x="400" y="560" font-family="monospace" font-size="16" fill="#777" text-anchor="middle" letter-spacing="2">REPLACE — SPHERE GLOBE</text>
+</svg>
