@@ -63,7 +63,7 @@ export default function ClassifiedContact() {
             aria-live="polite"
           >
             <span className="classified-contact__bubble-text">
-              Phone Linging
+              Yo Phone Linging
               <span className="classified-contact__dots">
                 <span /><span /><span />
               </span>

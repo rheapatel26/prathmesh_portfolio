@@ -21,11 +21,11 @@
 }
 
 .life-lately__heading {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: clamp(40px, 7vw, 96px);
-  font-weight: 500;
+  font-weight: 700;
   color: #8f1c1f;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   line-height: 1;
 }
 

@@ -1,4 +1,5 @@
 import { portfolio } from '../data/portfolio';
+import { scrollToSelector } from '../utils/scrollTo';
 import './Footer.css';
 
 export default function Footer() {
@@ -36,6 +37,8 @@ export default function Footer() {
               { href: '#about', label: 'About' },
               { href: '#life-lately', label: 'Life Lately' },
               { href: '#case-studies', label: 'Case Studies' },
+              { href: '#lab', label: 'Lab' },
+              { href: '#classified-contact', label: 'Contact' },
             ].map(({ href, label }) => (
               <a
                 key={href}
@@ -44,7 +47,7 @@ export default function Footer() {
                 data-hover
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+                  scrollToSelector(href);
                 }}
               >
                 ↗ {label.toUpperCase()}

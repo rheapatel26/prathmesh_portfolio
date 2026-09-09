@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { portfolio } from '../data/portfolio';
+import { scrollToSelector } from '../utils/scrollTo';
 import './Navbar.css';
 
 interface NavLinkItem {
@@ -82,10 +83,7 @@ export default function Navbar() {
       window.open(link.href, '_blank', 'noopener,noreferrer');
       return;
     }
-    const target = document.querySelector(link.href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToSelector(link.href);
   };
 
   return (

@@ -12,7 +12,7 @@
   /* warm cream/yellow hero bg     */
   --bg-dark: #0a0a08;
   /* near-black sections           */
-  --bg-footer: #1a1c10;
+  --bg-footer: #4a0000ff;
   /* dark olive footer             */
   --bg-card: #111109;
   /* project card bg               */
@@ -37,6 +37,7 @@
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'Space Mono', 'Courier New', monospace;
   --font-hand: 'Caveat', cursive;
+  --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* Spacing */
   --nav-h: 85px;
