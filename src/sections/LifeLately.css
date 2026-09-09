@@ -41,6 +41,7 @@
 /* Stack viewport */
 .life-lately__stack {
   position: relative;
+  z-index: 3;
   width: min(340px, 82vw);
   height: min(440px, 92vw);
   margin-top: 64px;

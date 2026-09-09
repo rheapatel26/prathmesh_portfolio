@@ -1,0 +1,79 @@
+/* ── Life Lately stickers — hand-drawn red splash stickers ──── */
+.life-sticker {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.life-sticker__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(143, 28, 29, 0.35));
+}
+
+/* Scattered around the section, clear of the centered card stack */
+.life-sticker--tl {
+  top: max(10%, 200px);
+  left: 6%;
+}
+
+.life-sticker--tr {
+  top: max(18%, 260px);
+  right: 9%;
+}
+
+.life-sticker--ml {
+  top: 46%;
+  left: 3%;
+}
+
+.life-sticker--mr {
+  top: 40%;
+  right: 4%;
+}
+
+.life-sticker--bl {
+  bottom: 12%;
+  left: 9%;
+}
+
+.life-sticker--br {
+  bottom: 6%;
+  right: 5%;
+}
+
+/* Peeking out around the card stack, which sits centered with
+   max-width 340px / max-height 440px — these sit just past its edges. */
+.life-sticker--card-tl {
+  top: calc(50% - 190px);
+  left: calc(50% - 230px);
+}
+
+.life-sticker--card-tr {
+  top: calc(50% - 210px);
+  left: calc(50% + 190px);
+}
+
+.life-sticker--card-bl {
+  top: calc(50% + 170px);
+  left: calc(50% - 220px);
+}
+
+.life-sticker--card-br {
+  top: calc(50% + 190px);
+  left: calc(50% + 195px);
+}
+
+/* Sits under the card stack instead of over the page. .life-lately__stack
+   carries its own z-index so this ordering actually takes effect. */
+.life-sticker--behind {
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .life-sticker {
+    display: none;
+  }
+}

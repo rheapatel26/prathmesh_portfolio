@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion, useInView, useMotionValue, useTransform } from 'framer-motion';
+import LifeStickers from '../components/LifeStickers';
 import photo1 from '@/assets/life-lately/photo-1.png';
 import photo2 from '@/assets/life-lately/photo-2.png';
 import photo3 from '@/assets/life-lately/photo-3.png';
@@ -19,11 +20,11 @@ type StackItem = {
 };
 
 const CAPTIONS = [
-  'Coffee before the chaos.',
+  'Gym - 6 feet tall and natty',
   'Late-night build session.',
-  'Weekend, unplugged.',
-  'Somewhere between meetings.',
-  'A quiet Sunday reset.',
+  'Vacation - Boys trip',
+  'Draw the line - Bullying not cool',
+  'Fifa campagin - World Cup fever',
 ];
 
 const TAGS = ['MUMBAI', 'STUDIO', 'ROAD TRIP', 'DESK', 'HOME'];
@@ -115,7 +116,7 @@ function StackCard({
 }
 
 export default function LifeLately() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [stack, setStack] = useState(initialStack);
   const [exitDir, setExitDir] = useState<'left' | 'right'>('left');
@@ -130,6 +131,7 @@ export default function LifeLately() {
 
   return (
     <section className="life-lately" id="life-lately" ref={ref} aria-label="Life Lately">
+      <LifeStickers sectionRef={ref} />
       <div className="life-lately__inner">
         <motion.span
           className="section-label section-label--light"
