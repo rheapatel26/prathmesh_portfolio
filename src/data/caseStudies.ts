@@ -4,12 +4,12 @@
 // src/assets/case-studies/ when ready.
 // ============================================================
 
-import photo01 from '@/assets/case-studies/photo-01.svg';
-import photo02 from '@/assets/case-studies/photo-02.svg';
-import photo03 from '@/assets/case-studies/photo-03.svg';
-import mockup01 from '@/assets/case-studies/mockup-01.svg';
-import mockup02 from '@/assets/case-studies/mockup-02.svg';
-import mockup03 from '@/assets/case-studies/mockup-03.svg';
+import photo01 from '@/assets/case-studies/logo 1.png';
+import photo02 from '@/assets/case-studies/logo2.png';
+import photo03 from '@/assets/case-studies/logo3.png';
+import mockup01 from '@/assets/case-studies/IMG_2828.png';
+import mockup02 from '@/assets/case-studies/27.png';
+import mockup03 from '@/assets/case-studies/mockup.png';
 
 export type CaseStudy = {
   id: string;
@@ -35,23 +35,23 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     id: 'nexus',
-    tab: '_NEXUS_01',
-    category: 'Web App',
+    tab: 'DRAW THE LINE',
+    category: 'Workshop',
     categoryNumber: '01',
-    title: 'DESIGNING A DASHBOARD THAT SURFACES SIGNAL, NOT NOISE.',
+    title: 'CASE STUDY BRIEF — DRAW THE LINE',
     description: [
-      { text: 'Most analytics tools drown users in charts nobody asked for. Nexus was built around a different principle: ' },
-      { text: 'less data, better decisions.', bold: true },
-      { text: ' How I designed a real-time dashboard that only shows a metric when it changes the next action a merchant takes.' },
+      { text: 'Draw the Line is a two-day ' },
+      { text: 'anti-bullying workshop for Grades 8–10,', bold: true },
+      { text: ' designed to help students recognise bullying, build empathy, and confidently stand up as bystanders. We collaborated with Going to School (GTS) to develop the campaign and workshop.' },
     ],
     brief: {
-      classification: 'Web App · E-commerce Analytics',
-      role: 'Lead Designer & Frontend Engineer',
-      year: '2024',
-      status: 'Complete · Shipped to production',
+      classification: 'Social Impact · Education & Awareness',
+      role: 'Researcher & Designer',
+      year: '2026',
+      status: 'Completed · Workshop & Campaign',
       problemHeading: 'PROBLEM STATEMENT',
       problem:
-        'Placeholder copy — replace with your own. Store owners were spending hours cross-referencing spreadsheets to spot sales anomalies. Existing dashboards buried the one number that mattered under dozens that didn’t.',
+        'Bullying often happens in front of others, but bystanders hesitate to act because they don’t know how. Draw the Line helps students recognise bullying and build the confidence to speak up.',
     },
     photo: photo01,
     mockup: mockup01,
@@ -60,23 +60,22 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'forma',
-    tab: '_FORMA_02',
-    category: 'Design Tool',
+    tab: 'KARACHI BAKERY',
+    category: 'Rebranding',
     categoryNumber: '02',
-    title: 'REAL-TIME COLLABORATION WITHOUT THE LAG.',
+    title: 'KARACHI BAKERY REBRANDING',
     description: [
-      { text: 'Design tools promise "real-time" collaboration, then choke the moment two people touch the same frame. ' },
-      { text: 'Speed is a feature, not an optimization.', bold: true },
-      { text: ' How I rebuilt the sync engine so edits feel instant even on a bad connection.' },
+      { text: 'A rebranding project for the iconic Karachi Bakery, a Hyderabad-born Indian bakery best known for its biscuits, especially its signature fruit biscuits. ', bold: true },
+      { text: 'The project reimagines the brand’s heritage through a modern, premium visual identity, while retaining the familiarity and nostalgia associated with the brand.' },
     ],
     brief: {
-      classification: 'Design Tool · Collaboration Software',
-      role: 'Product Designer',
-      year: '2024',
-      status: 'Complete · Shipped to production',
+      classification: 'Brand Identity · Rebranding',
+      role: 'Brand Strategist & Designer',
+      year: '2026',
+      status: 'Completed · Brand Identity Exploration',
       problemHeading: 'PROBLEM STATEMENT',
       problem:
-        'Placeholder copy — replace with your own. Teams abandoned the tool mid-project once cursors started lagging past two concurrent editors, pushing them back to screenshots and Slack threads.',
+        'Karachi Bakery is an iconic Hyderabad-born bakery known for its signature biscuits and strong heritage. This project explores how the brand can be reimagined for a contemporary audience while retaining its nostalgia, familiarity, and legacy.',
     },
     photo: photo02,
     mockup: mockup02,
@@ -85,23 +84,21 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'pulse',
-    tab: '_PULSE_03',
-    category: 'Mobile App',
+    tab: ' MANAM CHOCOLATE',
+    category: 'Packaging Design',
     categoryNumber: '03',
-    title: 'TURNING WEARABLE NOISE INTO A HEALTH SIGNAL.',
+    title: 'MANAM CHOCOLATE FESTIVE DESIGNING',
     description: [
-      { text: 'Wearables collect more data than anyone can read. ' },
-      { text: 'A trend is only useful if it changes what you do tomorrow.', bold: true },
-      { text: ' Ongoing research into a recommendation layer that sits on top of raw sensor data.' },
+      { text: 'Manam Chocolate Packaging is a festive packaging design for Manam Chocolate’s Rakshabandhan Edition, combining traditional Indian rakhi-inspired elements with a modern, premium aesthetic. The design focuses on bold colours, minimal typography, and a unique gifting experience. ' },
     ],
     brief: {
-      classification: 'Mobile App · Health & Wellness',
-      role: 'Lead Researcher & Designer',
-      year: '2025',
-      status: 'Research in progress · Design exploration',
+      classification: 'Packaging Design · Festive Edition',
+      role: 'Packaging Designer',
+      year: '2026',
+      status: 'Completed · Concept Development',
       problemHeading: 'PROBLEM STATEMENT',
       problem:
-        'Placeholder copy — replace with your own. Users check their wearable stats daily but rarely change behavior — the data exists, the decision layer on top of it doesn’t.',
+        'A festive packaging concept for Manam Chocolate’s Rakshabandhan Edition, blending traditional Indian rakhi-inspired motifs with a modern, premium visual language to create a vibrant yet elegant gifting experience.',
     },
     photo: photo03,
     mockup: mockup03,

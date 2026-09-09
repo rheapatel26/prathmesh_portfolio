@@ -10,12 +10,13 @@ export default function Footer() {
   return (
     <footer className="footer section--footer" aria-label="Footer">
       <div className="footer__inner">
-        {/* Big name */}
+        {/* Big logo */}
         <div className="footer__name-wrap">
-          <h2 className="footer__name">
-            <span>{portfolio.name.first}</span>
-            <span>{portfolio.name.last}</span>
-          </h2>
+          <img
+            src="/images/logo.png"
+            alt={`${portfolio.name.first} ${portfolio.name.last}`}
+            className="footer__logo"
+          />
         </div>
 
         {/* Dashed divider */}

@@ -3,7 +3,7 @@
   --cs-red: #8a0202;
   --cs-black: var(--bg-card);
   --cs-paper: #f2eee1;
-  --cs-ink: #23230f;
+  --cs-ink: #420101ff;
   --cs-tag: var(--bg-card);
   background: #eeebe8;
   position: relative;
@@ -93,10 +93,11 @@
 .cs-tab span {
   display: inline-flex;
   align-items: center;
-  height: 52px; /* must match TAB_HEIGHT in CaseStudies.tsx — card's sticky offset assumes this */
+  height: 52px;
+  /* must match TAB_HEIGHT in CaseStudies.tsx — card's sticky offset assumes this */
   box-sizing: border-box;
   pointer-events: auto;
-  background: var(--cs-ink);
+  background: var(--cs-red);
   border: 1px solid rgba(35, 35, 15, 0.25);
   border-bottom: none;
   padding: 0 18px;
@@ -413,7 +414,7 @@
   z-index: 1;
   flex-shrink: 0;
   margin: -18px 14px 0 auto;
-  width: 54%;
+  width: 80%;
   transform: rotate(1.5deg);
   background: #fdfcf7;
   padding: 8px 8px 26px;
@@ -446,7 +447,7 @@
 .cs-card__mockup {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: top;
   filter: grayscale(0.6) sepia(0.25) contrast(1.15) brightness(0.97);
@@ -457,9 +458,9 @@
   font-weight: 600;
   font-size: 15px;
   line-height: 1.15;
-  color: var(--cs-ink);
+  color: #d6d3d3ff;
   margin-top: 4px;
-  padding: 0 2px;
+  padding: 10px 30px;
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
