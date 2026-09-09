@@ -206,6 +206,7 @@
 }
 
 @media (max-width: 900px) {
+
   /* Float boxes get busy/cramped on narrower viewports — keep the
      effect but shrink and thin them out via width overrides already
      set inline; just tighten section height a bit. */

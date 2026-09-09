@@ -1,11 +1,25 @@
 /* ── Color Bridge ────────────────────────────────────────── */
-/* A thin strip that fades the background from Case Studies
-   beige into Labs dark via a static gradient, so the seam
-   reads as a smooth color change instead of a hard edge. */
+/* Tall scroll zone (not itself visible) that gives the sticky black
+   panel below room to pin and fade in as the user scrolls through it. */
 .color-bridge {
-  width: 100%;
-  height: 40vh;          /* Enough height to give the eye a clear transition */
   position: relative;
-  z-index: 5;
-  background: linear-gradient(180deg, #eeebe8 0%, var(--bg-dark) 100%);
+  height: 180vh;
+  z-index: 6;
+  /* Matches Case Studies' bg so the zone reads as a continuation of it
+     until the fade panel below darkens over it — without this, the
+     dark body background behind would show through immediately. */
+  background: #eeebe8;
+}
+
+/* Pinned full-viewport black panel — starts transparent (revealing
+   whatever's still on screen from Case Studies) and fades to opaque
+   black by the time this zone finishes, handing off seamlessly into
+   Labs' own dark background. */
+.color-bridge__fade {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-dark);
+  pointer-events: none;
 }

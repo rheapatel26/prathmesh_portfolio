@@ -38,7 +38,7 @@ export default function Footer() {
               { href: '#about', label: 'About' },
               { href: '#life-lately', label: 'Life Lately' },
               { href: '#case-studies', label: 'Case Studies' },
-              { href: '#lab', label: 'Lab' },
+              { href: '#lab', label: 'Side Quests' },
               { href: '#classified-contact', label: 'Contact' },
             ].map(({ href, label }) => (
               <a

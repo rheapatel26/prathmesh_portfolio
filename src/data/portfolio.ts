@@ -143,11 +143,11 @@ export const portfolio = {
 
   // ── Lab (experiments) ─────────────────────────────────────
   labs: [
-    { id: "lab-1", number: "01", title: "SPHERE GLOBE" },
-    { id: "lab-2", number: "02", title: "SCROLL 3D CAROUSEL" },
-    { id: "lab-3", number: "03", title: "DRAG PARALLAX SLIDER" },
-    { id: "lab-4", number: "04", title: "ROTATING IMAGE STACK" },
-    { id: "lab-5", number: "05", title: "DIAGONAL CAROUSEL" },
+    { id: "lab-1", number: "01", title: "~~ FIFA PROMOTIONAL VIDEO ~~" },
+    { id: "lab-2", number: "02", title: "~~ AAKASHVAANI ~~" },
+    { id: "lab-3", number: "03", title: "~~ KARACHI BAKERY REBRANDING ~~" },
+    { id: "lab-4", number: "04", title: "~~ MARD KO DARD ~~" },
+    { id: "lab-5", number: "05", title: "~~ KEIBULLMAJAO ~~" },
   ],
 
   // ── Skills ────────────────────────────────────────────────

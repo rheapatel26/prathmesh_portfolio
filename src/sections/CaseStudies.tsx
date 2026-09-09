@@ -111,6 +111,8 @@ function CaseStudyOverlay({ study, index, total }: { study: (typeof caseStudies)
                 {study.cta?.label} ↗
               </a>
             )}
+
+            <img src={study.sticker} alt="" className="cs-card__sticker" aria-hidden="true" />
           </motion.div>
 
           {/* Right column — hole-punched brief sheet, overlapped by a

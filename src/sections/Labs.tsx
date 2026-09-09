@@ -1,20 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import { portfolio } from '../data/portfolio';
-import sphereGlobe from '@/assets/labs/sphere-globe.svg';
-import scroll3dCarousel from '@/assets/labs/scroll-3d-carousel.svg';
-import dragParallaxSlider from '@/assets/labs/drag-parallax-slider.svg';
-import rotatingImageStack from '@/assets/labs/rotating-image-stack.svg';
-import diagonalCarousel from '@/assets/labs/diagonal-carousel.svg';
+import fifaIndia from '@/assets/labs/fifa india.mp4';
+import aakashvani from '@/assets/labs/Aakashvani.mp4';
+import portfolioReel from '@/assets/labs/portfolioreel.mp4';
+import mardkodrd from '@/assets/labs/mardkodrd.mp4';
+import keibullmajao from '@/assets/labs/keibullmajao.mp4';
 import './Labs.css';
 
 const thumbnails: Record<string, string> = {
-  'lab-1': sphereGlobe,
-  'lab-2': scroll3dCarousel,
-  'lab-3': dragParallaxSlider,
-  'lab-4': rotatingImageStack,
-  'lab-5': diagonalCarousel,
+  'lab-1': fifaIndia,
+  'lab-2': aakashvani,
+  'lab-3': portfolioReel,
+  'lab-4': mardkodrd,
+  'lab-5': keibullmajao,
 };
+
+const isVideoSrc = (src: string) => src.endsWith('.mp4');
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -106,10 +108,29 @@ function LabFloatBox({
 
   const spot = FLOAT_SPOTS[index % FLOAT_SPOTS.length];
 
+  // Karachi Bakery (lab-3) and Mard Ko Dard (lab-4) sit above the "Side
+  // Quests" link text instead of behind it, like the rest of the floats.
+  const raised = lab.id === 'lab-3' || lab.id === 'lab-4';
+
   return (
-    <motion.div ref={ref} className="labs__float" style={{ ...spot, y, opacity }}>
+    <motion.div
+      ref={ref}
+      className="labs__float"
+      style={{ ...spot, y, opacity, zIndex: raised ? 20 : undefined }}
+    >
       <div className="labs__float-frame">
-        <img src={thumbnails[lab.id]} alt="" className="labs__float-img" loading="lazy" />
+        {isVideoSrc(thumbnails[lab.id]) ? (
+          <video
+            src={thumbnails[lab.id]}
+            className="labs__float-img"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <img src={thumbnails[lab.id]} alt="" className="labs__float-img" loading="lazy" />
+        )}
       </div>
       <span className="labs__float-label">{label}</span>
     </motion.div>
@@ -138,14 +159,27 @@ function LabCard({ lab, index }: { lab: (typeof portfolio.labs)[0]; index: numbe
       data-hover
     >
       <div className="lab-card__frame">
-        <motion.img
-          src={thumbnails[lab.id]}
-          alt={lab.title}
-          className="lab-card__img"
-          animate={{ scale: hovered ? 1.05 : 1 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          loading="lazy"
-        />
+        {isVideoSrc(thumbnails[lab.id]) ? (
+          <motion.video
+            src={thumbnails[lab.id]}
+            className="lab-card__img"
+            animate={{ scale: hovered ? 1.05 : 1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <motion.img
+            src={thumbnails[lab.id]}
+            alt={lab.title}
+            className="lab-card__img"
+            animate={{ scale: hovered ? 1.05 : 1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            loading="lazy"
+          />
+        )}
       </div>
       <div className="lab-card__footer">
         <span className="lab-card__num">{lab.number}</span>
@@ -172,7 +206,7 @@ function LabModal({ onClose }: { onClose: () => void }) {
       className="lab-modal"
       role="dialog"
       aria-modal="true"
-      aria-label="Lab experiments"
+      aria-label="Side Quests"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -181,7 +215,7 @@ function LabModal({ onClose }: { onClose: () => void }) {
     >
       <div className="lab-modal__inner">
         <div className="lab-modal__header">
-          <span className="lab-modal__heading">Lab</span>
+          <span className="lab-modal__heading">Side Quests</span>
           <button className="lab-modal__close" onClick={onClose} aria-label="Close" data-hover>
             Close ✕
           </button>
@@ -206,7 +240,7 @@ export default function Labs() {
   });
 
   return (
-    <section className="labs section--dark" id="lab" aria-label="Lab">
+    <section className="labs section--dark" id="lab" aria-label="Side Quests">
       {/* Tall scroll zone — background is solid dark from the moment this
           section begins (sitting right after Case Studies' light bg), so
           the flip reads as instant, matching the reference. "Lab ↗" stays
@@ -224,9 +258,9 @@ export default function Labs() {
             onClick={() => setModalOpen(true)}
             data-hover
             aria-haspopup="dialog"
-            aria-label="View lab experiments"
+            aria-label="View side quests"
           >
-            <span className="labs__text">Lab</span>
+            <span className="labs__text">Side Quests</span>
             <span className="labs__arrow">↗</span>
           </button>
         </div>

@@ -10,6 +10,9 @@ import photo03 from '@/assets/case-studies/logo3.png';
 import mockup01 from '@/assets/case-studies/IMG_2828.png';
 import mockup02 from '@/assets/case-studies/27.png';
 import mockup03 from '@/assets/case-studies/mockup.png';
+import sticker01 from '@/assets/case-studies/bully_character_line 11.png';
+import sticker02 from '@/assets/case-studies/sticker.png';
+import sticker03 from '@/assets/case-studies/tempImagekiBsWJ 1.png';
 
 export type CaseStudy = {
   id: string;
@@ -28,6 +31,7 @@ export type CaseStudy = {
   };
   photo: string;
   mockup: string;
+  sticker: string;
   status: 'complete' | 'in-progress';
   cta?: { label: string; href: string };
 };
@@ -55,6 +59,7 @@ export const caseStudies: CaseStudy[] = [
     },
     photo: photo01,
     mockup: mockup01,
+    sticker: sticker01,
     status: 'complete',
     cta: { label: 'View Case Study', href: '#' },
   },
@@ -79,6 +84,7 @@ export const caseStudies: CaseStudy[] = [
     },
     photo: photo02,
     mockup: mockup02,
+    sticker: sticker02,
     status: 'complete',
     cta: { label: 'View Case Study', href: '#' },
   },
@@ -102,6 +108,7 @@ export const caseStudies: CaseStudy[] = [
     },
     photo: photo03,
     mockup: mockup03,
+    sticker: sticker03,
     status: 'in-progress',
   },
 ];

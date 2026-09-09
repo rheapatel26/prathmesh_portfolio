@@ -126,7 +126,7 @@
   overflow: hidden;
 }
 
-/* Last card in the stack hands off straight into the ColorBridge/Labs
+/* Last card in the stack hands off straight into the ColorBridge/labs
    transition — dropping its shadow keeps that seam a clean color change
    instead of a shadow band sitting on top of the gradient. */
 .cs-card__body--last {
@@ -305,6 +305,19 @@
 
 .cs-card__badge-arrow {
   font-size: 12px;
+}
+
+/* Themed sticker stuck in the notebook page's bottom-right corner */
+.cs-card__sticker {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  pointer-events: none;
 }
 
 /* ── Right column ─────────────────────────────────────────── */
