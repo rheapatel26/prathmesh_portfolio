@@ -23,7 +23,7 @@
   /* cream (on dark)               */
   --text-muted: #6b6b58;
   /* muted on light bg             */
-  --text-muted-dk: #8a8a70;
+  --text-muted-dk: #c8c49e;
   /* muted on dark bg              */
   --text-accent: #c8c49e;
   /* gold-cream accent             */
@@ -68,6 +68,14 @@ html {
   /* clip (not hidden) — overflow-x:hidden on html/body silently breaks
      position:sticky for all descendants in Chromium/WebKit */
   overflow-x: clip;
+  /* Matches body — without this, elastic/rubber-band overscroll past the
+     top or bottom of the page flashes the browser's default white
+     background instead of blending with the page. */
+  background: var(--bg-dark);
+  /* Chrome's pull-to-refresh/overscroll glow at the top of the page is a
+     separate effect from Safari's rubber-band bounce — matching the
+     background doesn't stop it, only disabling it here does. */
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -75,6 +83,7 @@ body {
   background: var(--bg-dark);
   color: var(--text-light);
   overflow-x: clip;
+  overscroll-behavior-y: none;
   cursor: none;
   /* custom cursor */
 }

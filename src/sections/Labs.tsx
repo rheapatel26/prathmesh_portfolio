@@ -76,11 +76,12 @@ type FloatSpot = { top?: string; bottom?: string; left?: string; right?: string;
 // at once never sweep through the same column — only the top offset varies
 // within a lane for a little organic, non-grid-like variety.
 const FLOAT_SPOTS: FloatSpot[] = [
-  { top: '14%', left: '1%', width: 'min(19vw, 280px)' },
-  { top: '42%', left: '21%', width: 'min(19vw, 280px)' },
-  { top: '8%', left: '41%', width: 'min(19vw, 280px)' },
-  { top: '34%', left: '61%', width: 'min(19vw, 280px)' },
-  { top: '18%', left: '81%', width: 'min(19vw, 280px)' },
+  { top: '14%', left: '1%', width: 'min(23vw, 340px)' },
+  { top: '42%', left: '35%', width: 'min(23vw, 340px)' },
+  { top: '8%', left: '60%', width: 'min(23vw, 340px)' },
+  { top: '34%', left: '78%', width: 'min(23vw, 340px)' },
+  // Keibullmajao — sits on the left, centered under the "de" of "Side".
+  { top: '36%', left: '16%', width: 'min(23vw, 340px)' },
 ];
 
 function LabFloatBox({

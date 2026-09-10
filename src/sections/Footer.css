@@ -6,19 +6,19 @@
 .footer__inner {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 60px var(--section-px) 32px;
+  padding: 16px var(--section-px) 12px;
   display: flex;
   flex-direction: column;
 }
 
 /* Big name */
 .footer__name-wrap {
-  padding: 20px 0 40px;
+  padding: 0px 0 10px;
 }
 
 .footer__logo {
   display: block;
-  height: clamp(150px, 16vw, 220px);
+  height: clamp(150px, 20vw, 260px);
   width: auto;
   object-fit: contain;
 }
@@ -72,7 +72,7 @@
   align-items: center;
   gap: 0;
   border-top: 1px solid var(--border-dark);
-  padding-top: 20px;
+  padding-top: 10px;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;

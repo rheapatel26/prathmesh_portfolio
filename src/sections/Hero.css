@@ -1,5 +1,6 @@
 .hero-simple {
   width: 100%;
+  margin-top: -6px;
   background: #0d0d0d;
   overflow: hidden;
   position: relative;

@@ -20,8 +20,10 @@ export default function ColorBridge() {
 
   // Function form (not the [input, output] array form) — the array form
   // was observed to produce a rise-then-fall curve past the input range
-  // instead of clamping at 1, in this framer-motion version.
-  const opacity = useTransform(scrollYProgress, (v) => Math.min(v / 0.7, 1));
+  // instead of clamping at 1, in this framer-motion version. Uses the full
+  // 0–1 range (no early-complete dead zone) so none of the pin's already-
+  // short scroll distance is spent sitting on solid black doing nothing.
+  const opacity = useTransform(scrollYProgress, (v) => Math.min(v, 1));
 
   return (
     <div ref={ref} className="color-bridge">
