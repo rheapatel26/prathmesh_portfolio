@@ -1,0 +1,2 @@
+https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@400;500;600;700&display=swap
+fetched 2026-09-10T06:17:26.155Z

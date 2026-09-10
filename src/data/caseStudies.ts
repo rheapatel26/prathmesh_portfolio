@@ -61,7 +61,7 @@ export const caseStudies: CaseStudy[] = [
     mockup: mockup01,
     sticker: sticker01,
     status: 'complete',
-    cta: { label: 'View Case Study', href: '#' },
+    cta: { label: 'View Case Study', href: '/case-studies/draw-the-line/index.html' },
   },
   {
     id: 'forma',
