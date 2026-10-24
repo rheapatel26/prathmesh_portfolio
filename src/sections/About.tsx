@@ -6,6 +6,7 @@ import { portfolio } from '../data/portfolio';
 import { FlipCard } from '@/components/animate-ui/components/community/flip-card';
 import cardFront from '@/assets/front-card.png';
 import cardBack from '@/assets/back-card.png';
+import TornWave from '../components/TornWave';
 import './About.css';
 
 const fadeUp = {
@@ -40,6 +41,12 @@ export default function About() {
       ref={ref}
       aria-label="About"
     >
+      <TornWave
+        targetRef={ref}
+        fillColor="#ffffff"
+        strokeColor="#8f1c1f"
+        filterId="tear-distortion-about"
+      />
 
       <div className="about2__inner">
 

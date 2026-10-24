@@ -2,6 +2,7 @@ import { useRef, type CSSProperties } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { caseStudies } from '../data/caseStudies';
 import { BinderClip, PaperClipIcon, TornMapCorner } from '../components/CaseStudyDecor';
+import TornWave from '../components/TornWave';
 import './CaseStudies.css';
 
 // Sticky-stack tuning.
@@ -160,12 +161,19 @@ function CaseStudyOverlay({ study, index, total }: { study: (typeof caseStudies)
 }
 
 export default function CaseStudies() {
+  const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true, margin: '-60px' });
   const total = caseStudies.length;
 
   return (
-    <section className="case-studies section--light" id="case-studies" aria-label="Case Studies">
+    <section className="case-studies section--light" id="case-studies" ref={sectionRef} aria-label="Case Studies">
+      <TornWave
+        targetRef={sectionRef}
+        fillColor="#eeebe8"
+        strokeColor="#8a0202"
+        filterId="tear-distortion-case-studies"
+      />
       <div className="case-studies__header" ref={headerRef}>
         <motion.span
           className="section-label"

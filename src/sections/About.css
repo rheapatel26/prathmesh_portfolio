@@ -17,6 +17,7 @@
   background: #ffffff;
   padding: 80px var(--section-px) 100px;
   position: relative;
+  z-index: 7;
 }
 
 .about2__inner {
