@@ -36,7 +36,6 @@ export default function Footer() {
           <div className="footer__links-col">
             {[
               { href: '#about', label: 'About' },
-              { href: '#life-lately', label: 'Life Lately' },
               { href: '#case-studies', label: 'Case Studies' },
               { href: '#lab', label: 'Side Quests' },
               { href: '#classified-contact', label: 'Contact' },
